@@ -1,7 +1,6 @@
 'use strict';
 
 let mongoose = require('mongoose');
-let ReservationSchema = require('reservation');
 
 let apartmentSchema = new mongoose.Schema({
 	code: String,
