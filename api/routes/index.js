@@ -38,7 +38,7 @@ apiRouter.route('/hotels/:hotel_id/customers/:customer_id')
 	.get(customersController.getById)
 	.put(customersController.updateById);
 
-//customer routes
+//reservation routes
 apiRouter.route('/hotels/:hotel_id/reservations')
 	.get(reservationsController.findByHotel)
 	.post(reservationsController.create);
@@ -48,6 +48,13 @@ apiRouter.route('/hotels/:hotel_id/reservations/:reservation_id')
 	.get(reservationsController.getById)
 	.put(reservationsController.updateById);
 
+apiRouter.route('/hotels/:hotel_id/reservationsQuery')
+	.get(reservationsController.findByQuery);
+
+
+//customer-reservation routes
+apiRouter.route('/hotels/:hotel_id/customers/:customer_id/reservations')
+	.get(reservationsController.findByCustomer);
 
 //export router
 module.exports = apiRouter;

@@ -38,6 +38,31 @@ module.exports.getById = function(req, res) {
 	});
 };
 
+module.exports.findByCustomer = function(req, res) {
+	let hotelId = req.params.hotel_id;
+	let customerId = req.params.customer_id;
+	Reservation.find({customerId: customerId, hotelId: hotelId}, (err, reservations) => {
+		if(err) res.send(err);
+		res.json(reservations);
+	});
+};
+
+module.exports.findByQuery = function(req, res) {
+	let hotelId = req.params.hotel_id;
+	let targetDate = req.query.date;
+	Reservation.find(
+		{
+			$and:[
+				{"checkInDate" : { $lte : new Date(targetDate) }},
+				{"checkOutDate" : { $gte : new Date(targetDate) }}
+				], 
+			hotelId:hotelId
+		}, (err, reservations) => {
+		if(err) res.send(err);
+		res.json(reservations);
+	});
+};
+
 module.exports.updateById = function(req, res) 
 {
 	let id = req.params.reservation_id;

@@ -6,7 +6,6 @@ let Customer = mongoose.model('CustomerModel');
 module.exports.findByHotel = function(req, res)
 {
 	let hotelId = req.params.hotel_id;
-
 	Customer.find({hotelId: hotelId},(err, customers) => {
 		if(err) res.send(err);
 		res.json(customers);
@@ -27,7 +26,6 @@ module.exports.create = function(req, res)
 		res.json({message:'Customer created!'});
 	})
 };
-
 
 module.exports.getById = function(req, res) {
 	let id = req.params.customer_id;
