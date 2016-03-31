@@ -5,9 +5,9 @@ let Hotel = mongoose.model('HotelModel');
 
 module.exports.findAll = function(req, res)
 {
-	Hotel.find((err, customers) => {
+	Hotel.find((err, hotels) => {
 		if(err) res.send(err);
-		res.json(customers);
+		res.json(hotels);
 	})
 };
 
