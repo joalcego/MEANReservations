@@ -13,3 +13,4 @@ mongoose.connect(dbURI);
 require('../models/customer');
 require('../models/reservation');
 require('../models/apartment');
+require('../models/hotel');
