@@ -5,6 +5,7 @@ let apiRouter = express.Router();
 let hotelsController = require('../controllers/hotels');
 let apartmentsController = require('../controllers/apartments');
 let customersController = require('../controllers/customers');
+let reservationsController = require('../controllers/reservations');
 
 
 //hotel routes
@@ -37,6 +38,15 @@ apiRouter.route('/hotels/:hotel_id/customers/:customer_id')
 	.get(customersController.getById)
 	.put(customersController.updateById);
 
+//customer routes
+apiRouter.route('/hotels/:hotel_id/reservations')
+	.get(reservationsController.findByHotel)
+	.post(reservationsController.create);
+
+apiRouter.route('/hotels/:hotel_id/reservations/:reservation_id')
+	.delete(reservationsController.deleteById)
+	.get(reservationsController.getById)
+	.put(reservationsController.updateById);
 
 
 //export router
